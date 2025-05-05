@@ -1,0 +1,206 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 29% 97%;
+    --foreground: 20 14% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 20%;
+
+    --primary: 22 42% 42%;
+    --primary-foreground: 45 29% 97%;
+
+    --secondary: 32 30% 64%;
+    --secondary-foreground: 20 14% 20%;
+
+    --muted: 26 22% 92%;
+    --muted-foreground: 25 5% 45%;
+
+    --accent: 78 31% 32%;
+    --accent-foreground: 45 29% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 29% 97%;
+
+    --border: 20 10% 85%;
+    --input: 20 10% 85%;
+    --ring: 22 42% 42%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cafe-offWhite text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair font-medium;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply container max-w-7xl mx-auto px-6 sm:px-8 py-20 sm:py-28;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold mb-6 md:mb-8 text-cafe-brown relative 
+      after:content-[''] after:block after:w-24 after:h-1 after:bg-cafe-terracotta after:mt-3;
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl mb-10 md:mb-14 text-muted-foreground max-w-3xl leading-relaxed;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-cafe-brown text-white rounded-full hover:bg-cafe-brown/90 
+      transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02] 
+      flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-cafe-terracotta text-white rounded-full hover:bg-cafe-terracotta/90 
+      transition-all duration-300 hover:shadow-lg transform hover:scale-[1.02] 
+      flex items-center justify-center gap-2;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 bg-transparent border-2 border-cafe-brown text-cafe-brown rounded-full 
+      hover:bg-cafe-brown hover:text-white transition-all duration-300 hover:shadow-lg 
+      flex items-center justify-center gap-2;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .menu-card {
+    @apply bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl 
+      transition-all duration-300 transform hover:-translate-y-1;
+  }
+
+  .testimonial-card {
+    @apply bg-white rounded-xl p-6 shadow-md hover:shadow-xl relative 
+      transition-all duration-300 transform hover:-translate-y-1 border-t-4 border-cafe-terracotta;
+  }
+
+  .feature-card {
+    @apply bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-xl 
+      transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center;
+  }
+
+  .icon-circle {
+    @apply w-16 h-16 rounded-full flex items-center justify-center mb-4
+      bg-gradient-to-br from-cafe-terracotta to-cafe-brown text-white;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-bounce-small {
+    animation: bounceSmall 2s infinite ease-in-out;
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+  
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-yellow-200 via-cafe-terracotta to-cafe-lightBrown bg-clip-text text-transparent;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceSmall {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .gradient-overlay {
+    @apply bg-gradient-to-t from-black/80 via-black/50 to-black/30;
+  }
+}
+
+.cafe-pattern {
+  background-color: #FAF7F2;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238d5b4c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.terracotta-pattern {
+  background-color: #F2E8DC;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23cf7f59' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
